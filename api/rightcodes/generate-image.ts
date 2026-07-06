@@ -38,7 +38,7 @@ export default async function handler(req, res) {
       ? `${promptWithRef}. Avoid: ${negativePrompt.trim()}`
       : promptWithRef;
 
-    const body = {
+    const body: { model: string; prompt: string; size: string; response_format: string; image?: string[] } = {
       model: model || 'gpt-image-2',
       prompt: combinedPrompt,
       size: sizeMap[aspectRatio || '1:1'] || '1024x1024',
